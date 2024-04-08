@@ -20,3 +20,9 @@ build:
 
 clean:
 	@rm -rf build venv *.spec
+
+lint:
+	ruff check src
+
+format:
+	ruff format src
