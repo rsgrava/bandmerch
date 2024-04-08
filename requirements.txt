@@ -1,0 +1,6 @@
+bs4
+pyinstaller
+pyside6
+requests
+selenium
+webdriver-manager
