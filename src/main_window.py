@@ -1,3 +1,5 @@
+from PySide6.QtCore import Qt
+from PySide6.QtGui import QGuiApplication
 from PySide6.QtWidgets import QMainWindow, QMessageBox
 
 from bandmerch import execute
@@ -27,11 +29,17 @@ class MainWindow(QMainWindow):
         return options
 
     def generate(self):
+        QGuiApplication.setOverrideCursor(Qt.WaitCursor)
+        self.setEnabled(False)
+        self.repaint()
         try:
             execute(self.get_options())
         except Exception as e:
+            QGuiApplication.restoreOverrideCursor()
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Critical)
             msg.setText(str(e))
             msg.setWindowTitle("Error")
             msg.exec()
+        QGuiApplication.restoreOverrideCursor()
+        self.setEnabled(True)
