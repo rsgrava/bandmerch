@@ -14,7 +14,7 @@ def load_page(label):
         raise Exception("Please input an artist/label's name.")
 
     url = f"https://{label}.bandcamp.com/merch"
-    if requests.get(url).status_code != 200:
+    if requests.get(url, allow_redirects=False).status_code != 200:
         raise Exception(
             f"Failed to find merch page for artist/label '{label}'. Is the name correct? Does the label have a merch page?"
         )
