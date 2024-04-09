@@ -1,5 +1,6 @@
 *.html
 *.spec
+src/ui*.py
 __pycache__
 build
 dist
